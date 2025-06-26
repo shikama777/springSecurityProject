@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import myapp.service.SessionService;
 
 @Controller
-public class HomeController {
+public class UserHomeController {
 	
 	@Autowired
 	private SessionService sessionService;
 	
-	@GetMapping("/")
+	@GetMapping("/user")
 	public String home(Model model) {
 		model.addAttribute("name", sessionService.getUserName());
-		return "home";
+		return "userHome";
 	}
 }

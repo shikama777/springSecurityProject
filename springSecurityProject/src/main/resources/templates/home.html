@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<p>
+		名前：<span th:text="${name}"></span>
+	</p>
+	<form th:action="@{/logout}" method="post">
+		<button type="submit">ログアウト</button>
+	</form>
+	<a href="/admin">管理者ホーム</a>
+	<a href="/user">ユーザーホーム</a>
+</body>
+
+</html>

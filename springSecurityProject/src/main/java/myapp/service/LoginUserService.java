@@ -20,6 +20,12 @@ public class LoginUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUserLoginId(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        String role = "";
+        if (user.getRole().equals("1")) {
+        	role = "ROLE_ADMIN";
+        } else if (user.getRole().equals("2")) {
+        	role = "ROLE_USER";
+        } 
 
         return new org.springframework.security.core.userdetails.User(
                 user.getUserLoginId(),
@@ -28,7 +34,7 @@ public class LoginUserService implements UserDetailsService {
                 true,
                 true,
                 true,
-                AuthorityUtils.createAuthorityList("ROLE_USER")
+                AuthorityUtils.createAuthorityList(role)
         );
     }
 
